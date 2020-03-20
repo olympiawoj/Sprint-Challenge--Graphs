@@ -20,6 +20,9 @@ class Queue():
             return None
     def size(self):
         return len(self.queue)
+    def __repr__(self):
+        for el in self.queue:
+            return f"{el}"
 
 class Stack():
     def __init__(self):
@@ -100,6 +103,34 @@ class Graph:
                 if new_room.id not in visited:
                     stack.push(new_room)
             visited.add(room_id)
+        
+    def traverse_rooms_df(self):
+        visited = set()
+        directions = []
+        stack = [(0, None)]
+        current_room = 0
+
+        visited.add(current_room)
+        print('LENGTH****',len(g.vertices), visited)
+        while len(visited) < len(self.vertices):
+            valid_neighbors = self.get_neighbors(current_room, visited)
+            print('here are the valid neighbors', valid_neighbors)
+            if valid_neighbors:
+                random_neighbor, random_direction = self.select_neighbor(
+                    valid_neighbors)
+                stack.append((current_room, random_direction))
+                current_room = random_neighbor
+                # print(current_room, random_direction.value)
+                directions.append(random_direction.value)
+                visited.add(current_room)
+            elif stack:
+                room, direction = stack.pop()
+                current_room = room
+                # print(current_room, self.get_reverse_direction(direction).value)
+                directions.append(self.get_reverse_direction(direction).value)
+        print('here are the directions', directions
+        )
+        return directions
 
     
 

@@ -1,9 +1,10 @@
+
 from room import Room
 from player import Player
 from world import World
-
-import random
+from util import Stack, Queue  # These may come in handy
 from ast import literal_eval
+import random
 
 # Load world
 world = World()
@@ -23,11 +24,20 @@ world.load_graph(room_graph)
 # Print an ASCII map
 world.print_rooms()
 
+# Initialize a player in the world at starting toom 0
 player = Player(world.starting_room)
 
 # Fill this out with directions to walk
 # traversal_path = ['n', 'n']
 traversal_path = []
+
+from util import Stack, Queue, Graph  # These may come in handy
+
+#Step 1) Instantiate Graph to traverse
+g = Graph()
+
+#run depth first traversal to create the graph
+g.dft(world.starting_room)
 
 
 

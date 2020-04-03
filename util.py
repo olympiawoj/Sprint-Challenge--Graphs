@@ -38,7 +38,7 @@ class Stack():
     #     return f"{el}"
 
 
-#crate a graph
+#create a graph
 class Graph:
     """
     Represent a graph of ancestor nodes, mapping parents relationship to children
